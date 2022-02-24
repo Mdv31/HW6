@@ -11,15 +11,6 @@ public class Ticket {
         this.priority = priority;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
     public int getQueue() {
         return queue;
     }
@@ -42,6 +33,14 @@ public class Ticket {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     // todo: serialized поля, геттеры и сеттеры
