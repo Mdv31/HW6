@@ -148,11 +148,11 @@ public class Ticket {
     String modified;
     String submitter_email;
     int status;
-    boolean[] on_hold;
+    boolean on_hold;
     String description;
     String resolution;
     int priority;
-    String[] last_escalation;
+    String last_escalation;
     String secret_key;
     int queue;
     int kbitem;
