@@ -57,7 +57,6 @@ public abstract class BaseTest {
     protected static Ticket createTicket(Ticket ticket) {
         // todo: отправить HTTP запрос для создания тикета
         Response response = given()
-                .auth().basic("demo", "demo1234")
                 .body(ticket)
                 .when()
                 .post("/api/tickets/")
@@ -68,9 +67,6 @@ public abstract class BaseTest {
 
         //Захватил ИД из ответа
         idd = Integer.parseInt(response.jsonPath().getString("id"));
-
-
-
-        return null;
+        return ticket;
     }
 }
