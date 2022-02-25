@@ -29,7 +29,7 @@ public class UpdateTicketTest extends BaseTest {
                 .when()
                 .put("/api/tickets//{id}")
                 .then()
-                .statusCode(400)
+                .statusCode(200)
                 .extract()
                 .body()
                 .as(Ticket.class);
