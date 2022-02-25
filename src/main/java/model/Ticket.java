@@ -48,8 +48,8 @@ public class Ticket {
 
     @Override
     public int hashCode() {
-        // todo
-        return 0;
+
+        return this.hashCode();
     }
 
 

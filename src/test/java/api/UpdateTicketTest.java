@@ -2,6 +2,7 @@ package api;
 
 import model.Status;
 import model.Ticket;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -14,6 +15,7 @@ public class UpdateTicketTest extends BaseTest {
         // todo: создать тикет со статусом Closed, затем обновить тикет и проверить сообщение об ошибке (негативный сценарий)
         Ticket ticket = BaseTest.buildNewTicket(Status.CLOSED,2);
         createTicket(ticket);
+        ticket.setStatus(1);
         updateTicketNegative(ticket);
     }
 
@@ -28,11 +30,17 @@ public class UpdateTicketTest extends BaseTest {
                 .then()
                 .statusCode(200);
 
-        given()
+        Ticket actual=given()
                 .pathParam("id", idd)
                 .when()
                 .get("/api/tickets//{id}")
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .extract().body()
+                .as(Ticket.class);
+
+        System.out.println(actual.hashCode());
+        System.out.println(ticket.hashCode());
+        Assert.assertEquals(actual.hashCode(), ticket.hashCode());
     }
 }
