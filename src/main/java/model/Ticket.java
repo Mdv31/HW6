@@ -83,11 +83,11 @@ public class Ticket {
         this.kbitem = kbitem;
     }
 
-    public String[] getLast_escalation() {
+    public String getLast_escalation() {
         return last_escalation;
     }
 
-    public void setLast_escalation(String[] last_escalation) {
+    public void setLast_escalation(String last_escalation) {
         this.last_escalation = last_escalation;
     }
 
@@ -107,11 +107,11 @@ public class Ticket {
         this.modified = modified;
     }
 
-    public boolean[] getOn_hold() {
+    public boolean isOn_hold() {
         return on_hold;
     }
 
-    public void setOn_hold(boolean[] on_hold) {
+    public void setOn_hold(boolean on_hold) {
         this.on_hold = on_hold;
     }
 
