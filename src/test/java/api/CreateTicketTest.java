@@ -22,10 +22,10 @@ public class CreateTicketTest extends BaseTest {
 
     protected Ticket getTicket(int id) {
         // todo: отправить HTTP запрос на получение тикета по его id
-    given().auth().basic("demo", "demo1234")
+    given().auth().basic("admin", "adminat")
                 .pathParam("id", id)
                 .when()
-                .get("/api/searches/{id}")
+                .get("/api/searches//{id}")
                 .then()
                 .statusCode(200);
         return null;
