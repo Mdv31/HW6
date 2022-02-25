@@ -40,11 +40,8 @@ public class UpdateTicketTest extends BaseTest {
                 .body()
                 .as(Ticket.class);
 
-
-
         int a1 = actual.hashCode();
         int a2 = ticket.hashCode();
-
-        Assert.assertEquals(a1, a2);
+        Assert.assertEquals(a2, a1);
     }
 }
