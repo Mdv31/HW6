@@ -16,12 +16,12 @@ public class UpdateTicketTest extends BaseTest {
         // todo: создать тикет со статусом Closed, затем обновить тикет и проверить сообщение об ошибке (негативный сценарий)
         Ticket ticket = BaseTest.buildNewTicket(Status.CLOSED, 2);
         createTicket(ticket);
-        ticket.setStatus(1);
         updateTicketNegative(ticket);
     }
 
     private void updateTicketNegative(Ticket ticket) {
         // todo: отправить HTTP запрос для обновления данных тикета и сразу же проверить статус код (должен соответствовать ошибке)
+        ticket.setStatus(1);
 
         Ticket ticket11=given()
                 .pathParam("id", idd)
@@ -29,7 +29,7 @@ public class UpdateTicketTest extends BaseTest {
                 .when()
                 .put("/api/tickets//{id}")
                 .then()
-                .statusCode(200)
+                .statusCode(400)
                 .extract()
                 .body()
                 .as(Ticket.class);
