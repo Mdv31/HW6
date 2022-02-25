@@ -13,7 +13,8 @@ public class CreateTicketTest extends BaseTest {
     @Test
     public void createTicketTest() {
         // todo: создать тикет и проверить, что он находится в системе
-        BaseTest.buildNewTicket(Status.OPEN,2);
+        Ticket ticket = BaseTest.buildNewTicket(Status.OPEN,2);
+        createTicket(ticket);
         getTicket(idd);
     }
 

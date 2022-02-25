@@ -50,7 +50,7 @@ public abstract class BaseTest {
         ticket.setPriority(priority);
         ticket.setStatus(status.getCode());
         ticket.setQueue(1);
-        createTicket(ticket);
+        //createTicket(ticket);
         return ticket;
     }
 

@@ -12,20 +12,15 @@ public class UpdateTicketTest extends BaseTest {
     @Test
     public void updateTicketTest() {
         // todo: создать тикет со статусом Closed, затем обновить тикет и проверить сообщение об ошибке (негативный сценарий)
-        BaseTest.buildNewTicket(Status.CLOSED,2);
-        Ticket ticket = new Ticket();
-        ticket.setStatus(1);
-        ticket.setQueue(1);
-        ticket.setPriority(2);
-        ticket.setId(idd);
-        ticket.setTitle("Запрос на обновление. Тест.");
+        Ticket ticket = BaseTest.buildNewTicket(Status.CLOSED,2);
+        createTicket(ticket);
         updateTicketNegative(ticket);
     }
 
     private void updateTicketNegative(Ticket ticket) {
         // todo: отправить HTTP запрос для обновления данных тикета и сразу же проверить статус код (должен соответствовать ошибке)
 
-        given().auth().basic("admin", "adminat")
+        given()
                 .pathParam("id", idd)
                 .body(ticket)
                 .when()
@@ -33,7 +28,7 @@ public class UpdateTicketTest extends BaseTest {
                 .then()
                 .statusCode(200);
 
-        given().auth().basic("admin", "adminat")
+        given()
                 .pathParam("id", idd)
                 .when()
                 .get("/api/tickets//{id}")
