@@ -51,7 +51,7 @@ public abstract class BaseTest {
         ticket.setStatus(status.getCode());
         ticket.setQueue(1);
         createTicket(ticket);
-        return null;
+        return ticket;
     }
 
     protected static Ticket createTicket(Ticket ticket) {
