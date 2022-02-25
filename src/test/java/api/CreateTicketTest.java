@@ -1,7 +1,5 @@
 package api;
 
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import model.Status;
 import model.Ticket;
 import org.testng.annotations.Test;
@@ -25,7 +23,7 @@ public class CreateTicketTest extends BaseTest {
     given().auth().basic("admin", "adminat")
                 .pathParam("id", id)
                 .when()
-                .get("/api/searches//{id}")
+                .get("/api/tickets//{id}")
                 .then()
                 .statusCode(200);
         return null;

@@ -1,7 +1,57 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 /** Объект тикета (POJO) */
 public class Ticket {
+
+    // todo: serialized поля, геттеры и сеттеры
+    int priority;
+    int id;
+    String title;
+    int queue;
+    int status;
+
+    @JsonIgnore
+    String due_date = "2022-02-25";
+    @JsonIgnore
+    String assigned_to ="admin";
+    @JsonIgnore
+    String created = "2022-01-27T08:26:11.689025";
+    @JsonIgnore
+    String modified = "2022-01-27T08:26:11.689025";
+    @JsonIgnore
+    String submitter_email = "test@test.test";
+    @JsonIgnore
+    boolean on_hold = false;
+    @JsonIgnore
+    String description = "test";
+    @JsonIgnore
+    String resolution = "test";
+    @JsonIgnore
+    String last_escalation = "test";
+    @JsonIgnore
+    String secret_key = "test";
+    @JsonIgnore
+    int kbitem = 1;
+    @JsonIgnore
+    int merged_to = 1;
+
+
+    @Override
+    public boolean equals(Object o) {
+        // todo
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        // todo
+        return 0;
+    }
+
 
     public int getPriority() {
         return priority;
@@ -137,38 +187,5 @@ public class Ticket {
 
     public void setSubmitter_email(String submitter_email) {
         this.submitter_email = submitter_email;
-    }
-
-    // todo: serialized поля, геттеры и сеттеры
-    int id;
-    String due_date;
-    String assigned_to;
-    String title;
-    String created;
-    String modified;
-    String submitter_email;
-    int status;
-    boolean on_hold;
-    String description;
-    String resolution;
-    int priority;
-    String last_escalation;
-    String secret_key;
-    int queue;
-    int kbitem;
-    int merged_to;
-
-
-
-    @Override
-    public boolean equals(Object o) {
-        // todo
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        // todo
-        return 0;
     }
 }

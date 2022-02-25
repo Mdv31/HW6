@@ -36,7 +36,7 @@ public class UpdateTicketTest extends BaseTest {
         given().auth().basic("admin", "adminat")
                 .pathParam("id", idd)
                 .when()
-                .get("/api/searches/{id}")
+                .get("/api/tickets//{id}")
                 .then()
                 .statusCode(200);
     }
