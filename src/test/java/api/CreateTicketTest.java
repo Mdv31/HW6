@@ -19,7 +19,7 @@ public class CreateTicketTest extends BaseTest {
     }
 
 
-    protected Ticket getTicket(int id) {
+    protected void getTicket(int id) {
         // todo: отправить HTTP запрос на получение тикета по его id
     given().auth().basic("admin", "adminat")
                 .pathParam("id", id)
@@ -27,6 +27,5 @@ public class CreateTicketTest extends BaseTest {
                 .get("/api/tickets//{id}")
                 .then()
                 .statusCode(200);
-        return null;
     }
 }

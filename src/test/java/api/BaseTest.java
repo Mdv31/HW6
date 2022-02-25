@@ -35,7 +35,7 @@ public abstract class BaseTest {
         requestSpecBuilder.addHeader("api_key", "Mdv31");
         requestSpecBuilder.setAccept(ContentType.JSON);
         requestSpecBuilder.setContentType(ContentType.JSON);
-        requestSpecBuilder.log(LogDetail.ALL);// задаём заголовок accept
+        //requestSpecBuilder.log(LogDetail.ALL);// задаём заголовок accept
 // задаём заголовок content-type
         RestAssured.requestSpecification = requestSpecBuilder // дополнительная инструкция полного логгирования для RestAssured
                 .build();
@@ -50,7 +50,6 @@ public abstract class BaseTest {
         ticket.setPriority(priority);
         ticket.setStatus(status.getCode());
         ticket.setQueue(1);
-        //createTicket(ticket);
         return ticket;
     }
 
