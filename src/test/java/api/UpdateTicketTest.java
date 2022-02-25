@@ -52,7 +52,7 @@ public class UpdateTicketTest extends BaseTest {
         System.out.println(ticket1);
         System.out.println(actual1);
 
-        Assert.assertTrue(actual.equals(ticket11));
+        Assert.assertFalse(actual.equals(ticket11));
         /*
         int a1 = actual.hashCode();
         int a2 = ticket.hashCode();
