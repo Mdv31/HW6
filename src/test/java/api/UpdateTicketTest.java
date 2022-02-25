@@ -1,5 +1,6 @@
 package api;
 
+import com.google.gson.Gson;
 import model.Status;
 import model.Ticket;
 import org.testng.Assert;
@@ -22,13 +23,16 @@ public class UpdateTicketTest extends BaseTest {
     private void updateTicketNegative(Ticket ticket) {
         // todo: отправить HTTP запрос для обновления данных тикета и сразу же проверить статус код (должен соответствовать ошибке)
 
-        given()
+        Ticket ticket11=given()
                 .pathParam("id", idd)
                 .body(ticket)
                 .when()
                 .put("/api/tickets//{id}")
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .extract()
+                .body()
+                .as(Ticket.class);
 
         Ticket actual = given()
                 .pathParam("id", idd)
@@ -40,12 +44,19 @@ public class UpdateTicketTest extends BaseTest {
                 .body()
                 .as(Ticket.class);
 
-        System.out.println(actual.equals(ticket));
-        System.out.println(ticket.equals(actual));
-        Assert.assertFalse(actual.equals(ticket));
+
+        Gson gson = new Gson();
+        String actual1 = gson.toJson(actual);
+        String ticket1 = gson.toJson(ticket11);
+
+        System.out.println(ticket1);
+        System.out.println(actual1);
+
+        Assert.assertTrue(actual.equals(ticket11));
         /*
         int a1 = actual.hashCode();
         int a2 = ticket.hashCode();
         Assert.assertEquals(a1, a2);*/
+
     }
 }
