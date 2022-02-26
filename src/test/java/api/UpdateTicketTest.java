@@ -23,10 +23,10 @@ public class UpdateTicketTest extends BaseTest {
         String ticket1 = gson.toJson(ticket);
         Ticket actual = updateTicketNegative(ticket);
         String actual1 = gson.toJson(actual);
-        System.out.println(ticket1);
-        System.out.println(actual1);
+        //System.out.println(ticket1);
+        //System.out.println(actual1);
 
-        Assert.assertTrue(actual.equals(ticket));
+        Assert.assertEquals(ticket1, actual1);
     }
 
     private Ticket updateTicketNegative(Ticket ticket) {
