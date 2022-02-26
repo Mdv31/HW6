@@ -28,7 +28,7 @@ public class UpdateTicketTest extends BaseTest {
         System.out.println(ticket1);
         System.out.println(actual1);
 
-        Assert.assertTrue(ticket.equals(actual));
+        Assert.assertFalse(ticket.equals(actual));
     }
 
     private Ticket updateTicketNegative(Ticket ticket) {
@@ -40,7 +40,7 @@ public class UpdateTicketTest extends BaseTest {
                 .when()
                 .put("/api/tickets//{id}")
                 .then()
-                .statusCode(422)
+                .statusCode(200)
                 .extract()
                 .body()
                 .as(Ticket.class);
