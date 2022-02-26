@@ -5,6 +5,7 @@ import model.Status;
 import model.Ticket;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import sun.util.resources.cldr.kea.TimeZoneNames_kea;
 
 import static io.restassured.RestAssured.given;
 
@@ -22,13 +23,14 @@ public class UpdateTicketTest extends BaseTest {
         Gson gson = new Gson();
         String ticket1 = gson.toJson(ticket);
 
+        int ticket_1=ticket.hashCode();
         Ticket actual = updateTicketNegative(ticket);
 
         String actual1 = gson.toJson(actual);
         System.out.println(ticket1);
         System.out.println(actual1);
 
-        Assert.assertFalse(ticket.equals(actual));
+        Assert.assertEquals(ticket_1,actual.hashCode());
     }
 
     private Ticket updateTicketNegative(Ticket ticket) {
