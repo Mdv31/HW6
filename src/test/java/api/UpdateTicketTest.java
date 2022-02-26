@@ -23,18 +23,18 @@ public class UpdateTicketTest extends BaseTest {
         String ticket1 = gson.toJson(ticket);
         Ticket actual = updateTicketNegative(ticket);
         String actual1 = gson.toJson(actual);
-        //System.out.println(ticket1);
-        //System.out.println(actual1);
+        System.out.println(ticket1);
+        System.out.println(actual1);
 
-        Assert.assertEquals(ticket1, actual1);
+        Assert.assertFalse(actual.equals(ticket));
     }
 
     private Ticket updateTicketNegative(Ticket ticket) {
         // todo: отправить HTTP запрос для обновления данных тикета и сразу же проверить статус код (должен соответствовать ошибке)
-        Ticket ticket2=ticket;
+        Ticket ticket2 = ticket;
         ticket.setStatus(1);
 
-        Ticket ticket11=given()
+        Ticket ticket11 = given()
                 .pathParam("id", idd)
                 .body(ticket)
                 .when()
@@ -55,20 +55,5 @@ public class UpdateTicketTest extends BaseTest {
                 .body()
                 .as(Ticket.class);
         return actual;
-
-/*
-        Gson gson = new Gson();
-        String ticket1 = gson.toJson(ticket2);
-        String actual1 = gson.toJson(actual);
-        System.out.println(ticket1);
-        System.out.println(actual1);
-        */
-
-        //Assert.assertFalse(actual.equals(ticket2));
-        /*
-        int a1 = actual.hashCode();
-        int a2 = ticket.hashCode();
-        Assert.assertEquals(a1, a2);*/
-
     }
 }
