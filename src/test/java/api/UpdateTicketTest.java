@@ -15,12 +15,21 @@ public class UpdateTicketTest extends BaseTest {
     public void updateTicketTest() {
         // todo: создать тикет со статусом Closed, затем обновить тикет и проверить сообщение об ошибке (негативный сценарий)
         Ticket ticket = BaseTest.buildNewTicket(Status.CLOSED, 2);
+        ticket.setStatus(4);
         createTicket(ticket);
-       // ticket.setId(idd);
-        updateTicketNegative(ticket);
+        ticket.setId(idd);
+
+        Gson gson = new Gson();
+        String ticket1 = gson.toJson(ticket);
+        Ticket actual = updateTicketNegative(ticket);
+        String actual1 = gson.toJson(actual);
+        System.out.println(ticket1);
+        System.out.println(actual1);
+
+        Assert.assertTrue(actual.equals(ticket));
     }
 
-    private void updateTicketNegative(Ticket ticket) {
+    private Ticket updateTicketNegative(Ticket ticket) {
         // todo: отправить HTTP запрос для обновления данных тикета и сразу же проверить статус код (должен соответствовать ошибке)
         Ticket ticket2=ticket;
         ticket.setStatus(1);
@@ -45,17 +54,17 @@ public class UpdateTicketTest extends BaseTest {
                 .extract()
                 .body()
                 .as(Ticket.class);
+        return actual;
 
-
+/*
         Gson gson = new Gson();
         String ticket1 = gson.toJson(ticket2);
         String actual1 = gson.toJson(actual);
-
-
         System.out.println(ticket1);
         System.out.println(actual1);
+        */
 
-        Assert.assertFalse(actual.equals(ticket2));
+        //Assert.assertFalse(actual.equals(ticket2));
         /*
         int a1 = actual.hashCode();
         int a2 = ticket.hashCode();
