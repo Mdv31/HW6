@@ -34,17 +34,17 @@ public class UpdateTicketTest extends BaseTest {
     private Ticket updateTicketNegative(Ticket ticket) {
         // todo: отправить HTTP запрос для обновления данных тикета и сразу же проверить статус код (должен соответствовать ошибке)
         ticket.setStatus(1);
-        Ticket ticket11 = given()
+        Ticket actual = given()
                 .pathParam("id", idd)
                 .body(ticket)
                 .when()
                 .put("/api/tickets//{id}")
                 .then()
-                .statusCode(200)
+                .statusCode(422)
                 .extract()
                 .body()
                 .as(Ticket.class);
-        return ticket11;
+        return actual;
     }
 }
 
