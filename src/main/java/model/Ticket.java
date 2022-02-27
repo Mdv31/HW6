@@ -42,8 +42,8 @@ public class Ticket {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Ticket)) return false;
+        //if (this == o) return true;
+        //if (!(o instanceof Ticket)) return false;
         Ticket ticket = (Ticket) o;
         return priority == ticket.priority && id == ticket.id && queue == ticket.queue && status == ticket.status && on_hold == ticket.on_hold && kbitem == ticket.kbitem && merged_to == ticket.merged_to && title.equals(ticket.title) && due_date.equals(ticket.due_date) && assigned_to.equals(ticket.assigned_to) && created.equals(ticket.created) && modified.equals(ticket.modified) && submitter_email.equals(ticket.submitter_email) && description.equals(ticket.description) && resolution.equals(ticket.resolution) && last_escalation.equals(ticket.last_escalation) && secret_key.equals(ticket.secret_key);
     }
