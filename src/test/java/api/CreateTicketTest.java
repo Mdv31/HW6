@@ -17,7 +17,7 @@ public class CreateTicketTest extends BaseTest {
         Ticket ticket = BaseTest.buildNewTicket(Status.OPEN,2);
         Ticket newTicket = createTicket(ticket);
         Assert.assertEquals(newTicket,ticket);
-        Ticket actual = getTicket(idd);
+        Ticket actual = getTicket(newTicket.getId());
         Assert.assertEquals(actual,newTicket);
     }
 
@@ -27,7 +27,7 @@ public class CreateTicketTest extends BaseTest {
     return given()
                 .pathParam("id", id)
                 .when()
-                .get("/api/tickets//{id}")
+                .get("/api/tickets/{id}")
                 .then()
                 .statusCode(200)
                 .extract()
