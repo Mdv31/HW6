@@ -16,17 +16,16 @@ public class UpdateTicketTest extends BaseTest {
     public void updateTicketTest() {
         // todo: создать тикет со статусом Closed, затем обновить тикет и проверить сообщение об ошибке (негативный сценарий)
         Ticket ticket = BaseTest.buildNewTicket(Status.CLOSED, 2);
-        Ticket actual = new Ticket();
-        actual =createTicket(ticket);
-        ticket.setId(idd);
-        ticket=updateTicketNegative(ticket);
-        //Assert.assertFalse(actual.equals(ticket));
+        Ticket newTicket = createTicket(ticket);
+        Assert.assertEquals(newTicket,ticket);
+        Ticket actual = updateTicketNegative(ticket);
+        Assert.assertEquals(actual,ticket);
     }
 
     private Ticket updateTicketNegative(Ticket ticket) {
         // todo: отправить HTTP запрос для обновления данных тикета и сразу же проверить статус код (должен соответствовать ошибке)
         ticket.setStatus(1);
-        Ticket ticket1 = given()
+        return given()
                 .pathParam("id", idd)
                 .body(ticket)
                 .when()
@@ -36,7 +35,6 @@ public class UpdateTicketTest extends BaseTest {
                 .extract()
                 .body()
                 .as(Ticket.class);
-        return ticket1;
     }
 }
 
