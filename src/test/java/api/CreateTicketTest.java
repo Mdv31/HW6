@@ -18,7 +18,7 @@ public class CreateTicketTest extends BaseTest {
         Ticket newTicket = createTicket(ticket);
         Assert.assertEquals(newTicket,ticket);
         Ticket actual = getTicket(newTicket.getId());
-        Assert.assertEquals(actual,newTicket);
+        Assert.assertEquals(actual,ticket);
     }
 
 
