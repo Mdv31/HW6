@@ -16,6 +16,7 @@ public class CreateTicketTest extends BaseTest {
         // todo: создать тикет и проверить, что он находится в системе
         Ticket ticket = BaseTest.buildNewTicket(Status.OPEN,2);
         Ticket newTicket = createTicket(ticket);
+        Assert.assertEquals(newTicket,ticket);
         Ticket actual = getTicket(idd);
         Assert.assertEquals(actual,newTicket);
     }
