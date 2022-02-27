@@ -2,6 +2,7 @@ package api;
 
 import model.Status;
 import model.Ticket;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -14,18 +15,22 @@ public class CreateTicketTest extends BaseTest {
     public void createTicketTest() {
         // todo: создать тикет и проверить, что он находится в системе
         Ticket ticket = BaseTest.buildNewTicket(Status.OPEN,2);
-        createTicket(ticket);
-        getTicket(idd);
+        Ticket newTicket = createTicket(ticket);
+        Ticket actual = getTicket(idd);
+        Assert.assertEquals(actual,newTicket);
     }
 
 
-    protected void getTicket(int id) {
+    protected Ticket getTicket(int id) {
         // todo: отправить HTTP запрос на получение тикета по его id
-    given()
+    return given()
                 .pathParam("id", id)
                 .when()
                 .get("/api/tickets//{id}")
                 .then()
-                .statusCode(200);
+                .statusCode(200)
+                .extract()
+                .body()
+                .as(Ticket.class);
     }
 }
